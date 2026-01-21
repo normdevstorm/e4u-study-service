@@ -1,0 +1,40 @@
+spring:
+  config:
+    activate:
+      on-profile: pod
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:postgres}:${DB_PORT:5432}/${DB_NAME:lessons}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  data:
+    redis:
+      host: ${REDIS_HOST:redis}
+      port: ${REDIS_PORT:6379}
+      timeout: 6000
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 8
+          min-idle: 4
+          max-wait: 5000
+  liquibase:
+    contexts: prod
+
+logging:
+  level:
+    root: INFO
+    com.e4u.lesson_service: INFO
+    org.springframework.web: WARN
+    org.hibernate: WARN
+
+server:
+  error:
+    include-stacktrace: never
+    include-message: on_param
+    include-binding-errors: on_param
+
