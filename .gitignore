@@ -75,7 +75,7 @@ application-secrets.yml
 docker-compose.override.yml
 
 ### Github ###
-*.github
+*.github/
 
 ### Gradle ###
 .gradle/
