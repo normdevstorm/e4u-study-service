@@ -28,6 +28,23 @@ management:
     health:
       show-details: when-authorized
 
+# Application Logging Configuration
+app:
+  logging:
+    enabled: true
+    log-request-body: true
+    log-response-body: true
+    max-request-body-length: 1000
+    max-response-body-length: 2000
+    slow-request-threshold-ms: 3000
+    excluded-uri-patterns:
+      - /actuator/**
+      - /health
+      - /ready
+      - /live
+      - /v3/api-docs/**
+      - /swagger-ui/**
+
 # OpenAPI / Swagger UI Configuration
 springdoc:
   api-docs:
